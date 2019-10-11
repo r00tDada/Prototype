@@ -8,7 +8,7 @@ var express               = require("express"),
     User                  = require("./models/user"),
     passportLocalMongoose = require("passport-local-mongoose");
 
-mongoose.connect("mongodb://localhost/coding_app",{ useNewUrlParser: true })
+// mongoose.connect("mongodb://localhost/coding_app",{ useNewUrlParser: true })
 app.use(require("express-session")({
     secret: "prototype",
     resave: false,
@@ -29,7 +29,7 @@ passport.deserializeUser(User.deserializeUser())
 //==============
 
 app.get("/", function(req,res){
-    res.render("landing");
+    res.render("login2");
 })
 app.get("/secret",isLoggedIn,function(req,res){
     res.render("secret");
@@ -70,9 +70,9 @@ function isLoggedIn(req,res,next){
     if(req.isAuthenticated()){
         return next()
     }
-    res.redirect("/login")
+    res.redirect("/login2")
 }
 
-app.listen(port, function () {
-    console.log("Running RestHub on port " + port);
+app.listen(5090, function () {
+    console.log("Running RestHub on port " + 5090);
 });
