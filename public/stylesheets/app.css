@@ -9,6 +9,7 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #5356ad;
   overflow: hidden;
+  font-size: 10px;
 }
 
 .table {
@@ -247,3 +248,41 @@ body {
   z-index: 3;
   fill: #fff;
 }
+
+.butn
+{
+    padding: 8px 22px;
+    background-color: #ff2148e0;
+    color: white;
+    font-size: 1.4em;
+    border: 1px solid white;
+    border-radius: 24px;
+    margin-left: 8%;
+    font-weight: bold;
+    display: inline;
+}
+
+.google
+{
+    padding: 8px 22px;
+    background-color: blue;
+    color: white;
+    font-size: 1.4em;
+    border: 1px solid white;
+    border-radius: 24px;
+    margin-left: 21%;
+    margin-top: 17%;
+}
+
+.google a, .butn a
+{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#blue
+{
+    background-color: blue;
+}
+
