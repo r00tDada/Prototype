@@ -23,12 +23,17 @@
                     <!-- <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a> -->
                 </div>
                 <span>or use your email for registration</span>
-                <input type="text" placeholder="Name" name="username" />
-                <input type="text" placeholder="Handle" name="handle"/>
-                <input type="email" placeholder="Email" name="email"/>
-                <input type="password" placeholder="Password" name="password"/>
-
-                <button>Sign Up</button>
+                <form action="/register" method="POST">
+                    <input name="email" placeholder="Email" type="text" required  />
+                    <input name="username" placeholder="Username" type="text" required  />
+                    <input name="password" placeholder="Password" type="Password" required  />
+                    <input name="handle" placeholder="handleUsername" type="text" required />
+                    <!-- <div class="btn">
+                        Sign up
+                    </div> -->
+                    <button class="butn" type="submit">SignUp</button>
+                    
+                </form>
                 
             </form>
         </div>
@@ -41,10 +46,15 @@
                     <!-- <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a> -->
                 </div>
                 <span>or use your account</span>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <form action="/login2" method="POST">
+                    <input name="username" placeholder="username" type="text" required />
+                    <input name="password" placeholder="password" type="Password" required />
+                    <!-- <div class="btn">
+                        Log in
+                    </div> -->
+                <button class="butn">Login</button>
                 <a href="#" class="forgot-password">Forgot your password?</a>
-                <button>Sign In</button>
+                
                 
             </form>
         </div>

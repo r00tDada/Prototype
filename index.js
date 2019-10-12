@@ -10,7 +10,7 @@ var express               = require("express"),
     request=require("request");
     const axios = require('axios');
 
-// mongoose.connect("mongodb://localhost/coding_app",{ useNewUrlParser: true })
+ mongoose.connect("mongodb://localhost/coding_app",{ useNewUrlParser: true })
 app.use(require("express-session")({
     secret: "prototype",
     resave: false,
@@ -31,60 +31,26 @@ passport.deserializeUser(User.deserializeUser())
 //==============
 
 app.get("/", function(req,res){
-    res.render("userprofile");
+    res.render("landing");
 })
 app.get("/secret",isLoggedIn,function(req,res){
     res.render("secret");
 })
 
-//Auth Routes
-
-//  app.post("/register",function(req,res){
-//      console.log("https://codeforces.com/api/user.info?handles="+ req.body.handle);
-//      request({
-//          url: "https://codeforces.com/api/user.info?handles="+ req.body.handle,
-//          json: true
-//      },function(error,response,body){
-//          if(!error || response.statusCode===200){
-//              if(body.status != "OK"){
-//                  console.log("Undefined Username");
-//                  res.redirect("back");
-//              }else{
-//                 User.register(new User({username: req.body.username,FullName: req.body.FullName,email: req.body.email}), req.body.password, function(err,user){
-//                     if(err){
-//                         console.log(err)
-//                         return res.render("/register")
-//                     }
-//                     passport.authenticate("local")(req,res, function(){
-//                       console.log(user.username);
-//                         res.redirect("/secret");
-                        
-//                     })
-//                 })
-//              }
-//          }else{
-//              console.log("Undefiername");
-//              console.log(error);
-//              res.redirect("back");
-
-//          }
-//      })
-      
-//  });
 
  app.post("/register",(req,res)=>{
     console.log(req.body.handle);
-    axios.get('https://codeforces.com/api/user.info?handles=eclipse_hunter')
+    axios.get('https://codeforces.com/api/user.info?handles='+req.body.handle)
       .then(response => {
           console.log(response.data);
-            User.register(new User({username: req.body.username,FullName: req.body.FullName,email: req.body.email,collegeName: req.body.collegeName,handle: req.body.handle}), req.body.password, function(err,user){
+            User.register(new User({username: req.body.username,email: req.body.email,handle: req.body.handle}), req.body.password, function(err,user){
                 if(err){
                     console.log(err)
-                    return res.render("/register")
+                    return res.render("/login2")
                 }
                 passport.authenticate("local")(req,res, function(){
                   console.log(user.username);
-                    res.redirect("/secret");
+                    res.redirect("/userprofile");
                     
                 })
             })
@@ -101,7 +67,7 @@ app.get("/login2",function(req,res){
 })
 
 app.post("/login2",passport.authenticate("local",{
-    successRedirect: "/secret",
+    successRedirect: "/userprofile",
     failureRedirect: "/login2"
 }) ,function(req,res){
 })
@@ -111,13 +77,18 @@ app.get("/logout",function(req,res){
     res.redirect("/");
 })
 
+app.get("/userprofile",(req,res)=>{
+    res.render("userprofile");
+})
+
 function isLoggedIn(req,res,next){
     if(req.isAuthenticated()){
         return next()
     }
-    res.redirect("/userprofile")
+    res.redirect("/login2")
 }
 
-app.listen(5090, function () {
-    console.log("Running RestHub on port " + 5090);
+app.listen(port, function () {
+    console.log("Running RestHub on port " + port);
 });
+
