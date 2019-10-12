@@ -11,7 +11,7 @@ var express = require("express"),
     request = require("request");
 const axios = require('axios');
 
- mongoose.connect("mongodb://localhost/coding_app",{ useNewUrlParser: true })
+//  mongoose.connect("mongodb://localhost/coding_app",{ useNewUrlParser: true })
 app.use(require("express-session")({
     secret: "prototype",
     resave: false,
