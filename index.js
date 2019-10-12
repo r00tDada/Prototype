@@ -29,7 +29,7 @@ passport.deserializeUser(User.deserializeUser())
 //==============
 
 app.get("/", function(req,res){
-    res.render("login2");
+    res.render("landing");
 })
 app.get("/secret",isLoggedIn,function(req,res){
     res.render("secret");
@@ -51,13 +51,13 @@ app.get("/secret",isLoggedIn,function(req,res){
       })
  });
  
-app.get("/login",function(req,res){
-     res.render("login")
+app.get("/login2",function(req,res){
+     res.render("login2")
 })
 
-app.post("/login",passport.authenticate("local",{
+app.post("/login2",passport.authenticate("local",{
     successRedirect: "/secret",
-    failureRedirect: "/login"
+    failureRedirect: "/login2"
 }) ,function(req,res){
 })
 
