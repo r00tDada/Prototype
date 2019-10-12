@@ -20,6 +20,15 @@ nav
     color: white;
     z-index: 1000;
 }
+.logo-image{
+    float: left;
+
+    width: 55px;
+    height: 50px;
+    /* border-radius: 50%; */
+    overflow: hidden;
+    margin-top: -16px;
+}
 
 ul
 {
@@ -43,7 +52,11 @@ ul li
     float: left;
     text-transform: uppercase;
     letter-spacing: 2px;
+    padding-left:6px;
+    font-size: 1em;
     color: #df283a;
+    margin-top: -8px;
+
 }
 
 .right

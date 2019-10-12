@@ -7,11 +7,16 @@ var express = require("express"),
     LocalStrategy = require("passport-local"),
     User = require("./models/user"),
     passportLocalMongoose = require("passport-local-mongoose"),
+    Friend = require("./models/friends"),
     request = require("request");
 const axios = require('axios');
 const fetch = require('node-fetch');
 
-mongoose.connect("mongodb://localhost/coding_app", { useNewUrlParser: true })
+
+
+
+
+//  mongoose.connect("mongodb://localhost/coding_app",{ useNewUrlParser: true })
 app.use(require("express-session")({
     secret: "prototype",
     resave: false,
@@ -33,6 +38,9 @@ passport.deserializeUser(User.deserializeUser())
 
 app.get("/", function (req, res) {
     res.render("landing");
+})
+app.get("/secret", isLoggedIn, function (req, res) {
+    res.render("secret");
 })
 
 
@@ -60,9 +68,11 @@ app.post("/register", (req, res) => {
         });
 })
 
+
 app.get("/login2", function (req, res) {
     res.render("login2")
 })
+
 
 app.post("/login2", passport.authenticate("local", {
     successRedirect: "/userprofile",
@@ -70,9 +80,41 @@ app.post("/login2", passport.authenticate("local", {
 }), function (req, res) {
 })
 
-app.get("/logout", isLoggedIn, function (req, res) {
+//Friend
+app.post("/addfriend", (req, res) => {
+    console.log(req.body.f_handle)
+    axios.get('https://codeforces.com/api/user.info?handles=' + req.body.handle)
+        .then(response => {
+            User.findById(req.params.id, function (err, found_user) {
+                if (err) {
+                    console.log("Error")
+                    res.redirect("/");
+                }
+                else {
+                    Friend.create(new Friend({ handle: req.body.f_handle }), function (err, friend) {
+                        if (err) {
+                            console.log(err)
+                            return res.render("user")
+                        }
+                        else {
+                            found_user.friends.push(friend);
+                            found_user.save();
+                            res.redirect("/userprofile");
+                        }
+                    });
+                }
+            });
+
+        });
+
+})
+
+app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");
+})
+app.get("/userprofile", function (req, res) {
+    res.render("userprofile");
 })
 
 app.get("/userprofile", isLoggedIn, (req, res) => {
