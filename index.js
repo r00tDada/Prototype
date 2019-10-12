@@ -80,7 +80,7 @@ app.get("/secret",isLoggedIn,function(req,res){
             User.register(new User({username: req.body.username,FullName: req.body.FullName,email: req.body.email,collegeName: req.body.collegeName,handle: req.body.handle}), req.body.password, function(err,user){
                 if(err){
                     console.log(err)
-                    return res.render("/register")
+                    return res.render("/login")
                 }
                 passport.authenticate("local")(req,res, function(){
                   console.log(user.username);
