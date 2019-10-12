@@ -1,0 +1,205 @@
+html,body
+{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-size: 10px;
+}
+
+nav
+{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    position: fixed;
+    height: 50px;
+    background-color: black;
+    color: white;
+    z-index: 1000;
+}
+
+ul
+{
+    list-style: none;
+    margin: 0;
+    padding: 15px 60px;
+}
+
+ul li
+{
+    display: inline;
+    font-size: 1.8em;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+    
+}
+
+.title
+{
+    float: left;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #df283a;
+}
+
+.right
+{
+    float: right;
+    font-size: 1.6em;
+    margin-left: 30px;
+   
+}
+
+ul li a
+{
+    color: white;
+    text-decoration: none;
+}
+
+ul li a:hover
+{
+    color: #df283a;
+    text-decoration: none;
+    transition: all 0.6s ease;
+
+}
+
+div.home
+{
+    height: 100vh;
+    padding: 160px 5%;
+}
+
+div.home h2
+{
+    font-size: 7em;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+
+div.home img
+{
+    max-width: 65%;
+    margin-left: 100px;
+    margin-top: 50px;;
+    
+}
+
+div.home .col-md-6
+{
+    text-align: center;
+}
+
+.name
+{
+    padding-top: 50px;
+    color: #e64b5a;
+}
+
+div.home h2 span.zero
+{
+    font-size: 6rem;
+}
+
+.one, .two, .three
+{
+    font-size: 2.6em;
+    margin-left: 30px;
+}
+
+.animate
+{
+    display: inline-block;
+}
+
+.one
+{
+    opacity: 0;
+    transform: translate3d(-600%, 0, 0);
+}
+
+.two
+{
+    opacity: 0;
+    transform: translate3d(0, 300%, 0);
+}
+
+.three
+{
+    opacity: 0;
+    transform: translate3d(600%, 0, 0);
+}
+
+
+.origin1
+{
+    opacity: 1;
+    transition: all 0.6s ease;
+    transform: translate3d(0, 0, 0);
+}
+
+.origin2
+{
+    opacity: 1;
+    transition: all 0.6s ease;
+    transform: translate3d(0, 0, 0);
+    transition-delay: 0.4s;
+}
+
+.origin3
+{
+    opacity: 1;
+    transition: all 0.6s ease;
+    transform: translate3d(0, 0, 0);
+    transition-delay: 0.8s;
+}
+
+.combat
+{
+    margin-top: 40px;
+    opacity: 0;
+    transform: translate3d(0, 300%, 0);
+}
+
+.origin4
+{
+    opacity: 1;
+    transition: all 0.6s ease;
+    transform: translate3d(0, 0, 0);
+    transition-delay: 1.4s;
+}
+
+div.join button
+{
+    background: transparent;
+    color: #df283a;
+    letter-spacing: 1px;
+    font-size: 1.7em;
+    font-weight: 500;
+    padding: 6px 24px 8px 24px;
+    border: 2px solid #df283a;
+    border-radius: 32px;
+    margin-left: 30px;
+    margin-top: 20px;
+   
+}
+
+.join
+{
+    opacity: 0;
+    margin-left: -25px;
+    transform: translate3d(0, 300%, 0);
+}
+
+.origin5
+{
+    opacity: 1;
+    transition: all 0.6s ease;
+    transform: translate3d(0, 0, 0);
+    transition-delay: 2s;
+}

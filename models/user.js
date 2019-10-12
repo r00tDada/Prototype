@@ -5,6 +5,14 @@ var UserSchema=new mongoose.Schema({
     password: String,
     email: String,
     FullName: String,
+    collegeName: String,
+    handle: String,
+    friends:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Friend"
+        }
+    ]
 })
 
 UserSchema.plugin(passportLocalMongoose)
