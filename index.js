@@ -11,7 +11,7 @@ var express = require("express"),
     request = require("request");
 const axios = require('axios');
 
- mongoose.connect("mongodb://localhost/coding_app",{ useNewUrlParser: true })
+//  mongoose.connect("mongodb://localhost/coding_app",{ useNewUrlParser: true })
 app.use(require("express-session")({
     secret: "prototype",
     resave: false,
@@ -31,28 +31,13 @@ passport.deserializeUser(User.deserializeUser())
 //Routes
 //==============
 
-<<<<<<< HEAD
-app.get("/", function (req, res) {
-=======
 app.get("/", function(req,res){
->>>>>>> 177f33ce4adfa41a7d0aeabfc72e53b266359d98
     res.render("landing");
 })
 app.get("/secret", isLoggedIn, function (req, res) {
     res.render("secret");
 })
 
-<<<<<<< HEAD
-//Auth Routes
-
-app.post("/register", (req, res) => {
-    console.log(req.body.handle);
-    axios.get('https://codeforces.com/api/user.info?handles=' + req.body.handle)
-        .then(response => {
-            console.log(response.data);
-            User.register(new User({ username: req.body.username, FullName: req.body.FullName, email: req.body.email, collegeName: req.body.collegeName, handle: req.body.handle }), req.body.password, function (err, user) {
-                if (err) {
-=======
 
  app.post("/register",(req,res)=>{
     console.log(req.body.handle);
@@ -61,21 +46,13 @@ app.post("/register", (req, res) => {
           console.log(response.data);
             User.register(new User({username: req.body.username,email: req.body.email,handle: req.body.handle}), req.body.password, function(err,user){
                 if(err){
->>>>>>> 177f33ce4adfa41a7d0aeabfc72e53b266359d98
                     console.log(err)
                     return res.render("/login2")
                 }
-<<<<<<< HEAD
-                passport.authenticate("local")(req, res, function () {
-                    console.log(user.username);
-                    res.redirect("/secret");
-
-=======
                 passport.authenticate("local")(req,res, function(){
                   console.log(user.username);
                     res.redirect("/userprofile");
                     
->>>>>>> 177f33ce4adfa41a7d0aeabfc72e53b266359d98
                 })
             })
             //console.log(response.data);
@@ -86,17 +63,14 @@ app.post("/register", (req, res) => {
         });
 })
 
-<<<<<<< HEAD
+
 app.get("/login2", function (req, res) {
     res.render("login2")
 })
 
-app.post("/login2", passport.authenticate("local", {
-    successRedirect: "/secret",
-=======
+
 app.post("/login2",passport.authenticate("local",{
     successRedirect: "/userprofile",
->>>>>>> 177f33ce4adfa41a7d0aeabfc72e53b266359d98
     failureRedirect: "/login2"
 }), function (req, res) {
 })
@@ -138,23 +112,18 @@ app.get("/userprofile", function (req, res) {
     res.render("userprofile");
 })
 
-<<<<<<< HEAD
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-=======
 app.get("/userprofile",(req,res)=>{
     res.render("userprofile");
 })
 
 function isLoggedIn(req,res,next){
     if(req.isAuthenticated()){
->>>>>>> 177f33ce4adfa41a7d0aeabfc72e53b266359d98
         return next()
     }
     res.redirect("/login2")
 }
 
-app.listen(port, function () {
-    console.log("Running RestHub on port " + port);
+app.listen(8080, function () {
+    console.log("Running RestHub on port " + 8080);
 });
 
