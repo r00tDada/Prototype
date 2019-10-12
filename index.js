@@ -6,7 +6,9 @@ var express               = require("express"),
     bodyParser            = require("body-parser"),
     LocalStrategy         = require("passport-local"),
     User                  = require("./models/user"),
-    passportLocalMongoose = require("passport-local-mongoose");
+    passportLocalMongoose = require("passport-local-mongoose"),
+    request=require("request");
+    const axios = require('axios');
 
 // mongoose.connect("mongodb://localhost/coding_app",{ useNewUrlParser: true })
 app.use(require("express-session")({
@@ -37,19 +39,62 @@ app.get("/secret",isLoggedIn,function(req,res){
 
 //Auth Routes
 
- app.post("/register",function(req,res){
-      User.register(new User({username: req.body.username,FullName: req.body.FullName,email: req.body.email}), req.body.password, function(err,user){
-          if(err){
-              console.log(err)
-              return res.render("/register")
-          }
-          passport.authenticate("local")(req,res, function(){
-            console.log(user.username);
-              res.redirect("/secret");
-              
-          })
+//  app.post("/register",function(req,res){
+//      console.log("https://codeforces.com/api/user.info?handles="+ req.body.handle);
+//      request({
+//          url: "https://codeforces.com/api/user.info?handles="+ req.body.handle,
+//          json: true
+//      },function(error,response,body){
+//          if(!error || response.statusCode===200){
+//              if(body.status != "OK"){
+//                  console.log("Undefined Username");
+//                  res.redirect("back");
+//              }else{
+//                 User.register(new User({username: req.body.username,FullName: req.body.FullName,email: req.body.email}), req.body.password, function(err,user){
+//                     if(err){
+//                         console.log(err)
+//                         return res.render("/register")
+//                     }
+//                     passport.authenticate("local")(req,res, function(){
+//                       console.log(user.username);
+//                         res.redirect("/secret");
+                        
+//                     })
+//                 })
+//              }
+//          }else{
+//              console.log("Undefiername");
+//              console.log(error);
+//              res.redirect("back");
+
+//          }
+//      })
+      
+//  });
+
+ app.post("/register",(req,res)=>{
+    console.log(req.body.handle);
+    axios.get('https://codeforces.com/api/user.info?handles=eclipse_hunter')
+      .then(response => {
+          console.log(response.data);
+            User.register(new User({username: req.body.username,FullName: req.body.FullName,email: req.body.email,collegeName: req.body.collegeName,handle: req.body.handle}), req.body.password, function(err,user){
+                if(err){
+                    console.log(err)
+                    return res.render("/register")
+                }
+                passport.authenticate("local")(req,res, function(){
+                  console.log(user.username);
+                    res.redirect("/secret");
+                    
+                })
+            })
+        //console.log(response.data);
+        //console.log(response.data.explanation);
       })
- });
+      .catch(error => {
+        console.log(error);
+      });
+ })
  
 app.get("/login2",function(req,res){
      res.render("login2")
