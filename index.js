@@ -29,7 +29,7 @@ passport.deserializeUser(User.deserializeUser())
 //==============
 
 app.get("/", function(req,res){
-    res.render("landing");
+    res.render("userprofile");
 })
 app.get("/secret",isLoggedIn,function(req,res){
     res.render("secret");
@@ -70,7 +70,7 @@ function isLoggedIn(req,res,next){
     if(req.isAuthenticated()){
         return next()
     }
-    res.redirect("/login2")
+    res.redirect("/userprofile")
 }
 
 app.listen(5090, function () {
