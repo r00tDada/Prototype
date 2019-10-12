@@ -10,7 +10,7 @@ var express               = require("express"),
     request=require("request");
     const axios = require('axios');
 
-mongoose.connect("mongodb://localhost/coding_app",{ useNewUrlParser: true })
+// mongoose.connect("mongodb://localhost/coding_app",{ useNewUrlParser: true })
 app.use(require("express-session")({
     secret: "prototype",
     resave: false,
@@ -31,7 +31,7 @@ passport.deserializeUser(User.deserializeUser())
 //==============
 
 app.get("/", function(req,res){
-    res.render("landing");
+    res.render("userprofile");
 })
 app.get("/secret",isLoggedIn,function(req,res){
     res.render("secret");
@@ -96,13 +96,13 @@ app.get("/secret",isLoggedIn,function(req,res){
       });
  })
  
-app.get("/login",function(req,res){
-     res.render("login")
+app.get("/login2",function(req,res){
+     res.render("login2")
 })
 
-app.post("/login",passport.authenticate("local",{
+app.post("/login2",passport.authenticate("local",{
     successRedirect: "/secret",
-    failureRedirect: "/login"
+    failureRedirect: "/login2"
 }) ,function(req,res){
 })
 
@@ -115,9 +115,9 @@ function isLoggedIn(req,res,next){
     if(req.isAuthenticated()){
         return next()
     }
-    res.redirect("/login")
+    res.redirect("/userprofile")
 }
 
-app.listen(port, function () {
-    console.log("Running RestHub on port " + port);
+app.listen(5090, function () {
+    console.log("Running RestHub on port " + 5090);
 });
