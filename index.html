@@ -1,0 +1,304 @@
+- var glob = 
+- [ 
+- {
+- l:"#home",
+- n: "Home"
+- },
+- {
+- l:"#about",
+- n: "Team"
+- },
+- {
+- l:"#services",
+- n: "Services"
+- },
+- {
+- l:"#testimonials",
+- n: "Testimonials"
+- },
+- {
+- l:"#news",
+- n: "News"
+- }
+- ]
+
+- var fig_url = 'https://source.unsplash.com/user/erondu/'
+- var slider_one = [
+- {
+- s: "b_on",
+- name: "Team lead",
+- fig: "200x200?1"
+- },
+- {
+- s: "b_tw",
+- name: "Web Designer",
+- fig: "200x200?2"
+- },
+- {
+- s: "b_th",
+- name: "Frontend developer",
+- fig: "200x200?3"
+- },
+- {
+- s: "b_fo",
+- name: "Backend developer",
+- fig: "200x200?4"
+- },
+- {
+- s: "b_fi",
+- name: "SEO marketer",
+- fig: "200x200?5"
+- }
+- ]
+
+- var bars = [
+- {
+- n: "Comunity",
+- v: "77"
+- },
+- {
+- n: "Team and Developers",
+- v: "65"
+- },
+- {
+- n: "Marketing",
+- v: "88"
+- },
+- {
+- n: "Design",
+- v: "80"
+- }
+- ]
+
+- var news = [
+- {
+- h: "News Company",
+- d: "October 09, 2019",
+- t: "Update"
+- },
+- {
+- h: "News Company",
+- d: "August 28, 2018",
+- t: "Design"
+- },
+- {
+- h: "News Company",
+- d: "April 30, 2018",
+- t: "Development"
+- },
+- {
+- h: "News Company",
+- d: "October 30, 2018",
+- t: "Tricks"
+- },
+- {
+- h: "News Company",
+- d: "January 26, 2012",
+- t: "Frontend"
+- },
+- {
+- h: "News Company",
+- d: "September 5, 2011",
+- t: "Marketing"
+- }
+- ]
+
+- var w_1 = [
+- {
+- icon: "fa fa-behance",
+- link: "https://www.behance.net/gallery/86619879/Landing-Page-IOGO-MEDIA-(Concept-Update)",
+- text: "Behance"
+- },
+- {
+- icon: "fa fa-dribbble",
+- link: "https://dribbble.com/andrejsharapov",
+- text: "Dribbble"
+- },
+- {
+- icon: "fa fa-codepen",
+- link: "https://codepen.io/andrejsharapov",
+- text: "CodePen"
+- }, 
+- {
+- icon: "fa fa-twitter",
+- link: "https://twitter.com/andrejsharapov",
+- text: "Twitter"
+- },
+- {
+- icon: "fa fa-github",
+- link: "https://github.com/madeas",
+- text: "GitHub"
+- }
+- ]
+
+- var w_2 = [
+- {
+- h: "Heading",
+- list: ["Forums", "License", "Guest Posting", "Advertise"]
+- }
+- ]
+
+- var w_3 = [
+- {
+- h: "Heading",
+- list: ["Subscribe", "Customers", "FAQ", "Support"]
+- }
+- ]
+
+- var w_4 = [
+- {
+- icon: "fa fa-map-o",
+- text: "County, Street name - number"
+- },
+- {
+- icon: "fa fa-phone",
+- text: "+7 999 999 00 00"
+- },
+- {
+- icon: "fa fa-envelope-o",
+- text: "company@name.com"
+- },
+- {
+- icon: "fa fa-clock-o",
+- text: "Mon.-Fri.: 10-20 Sun.: 12-16"
+- }
+- ]
+
+.smooth
+  header#top
+    h3 iOGO
+    nav
+      ul
+        each val in glob
+          li
+            a(href= val.l title= val.n) #{val.n}
+            
+  main
+    section#home(style="background-image: url(https://source.unsplash.com/collection/190727/1600x1200?1)")
+      .content
+        div
+          h1 iOGO MEDiA
+          svg.title
+            text(x="0" y="40") iOGO MEDiA
+            path(d="M 0 66 50 61")
+          p.lead
+            | If you click on navigation links, smooth scrolling does not work, perhaps the functions are not supported by your browser. You can check the support on the
+            | 
+            a(class="leadlink" href="https://caniuse.com/#search=scroll-behavior" target="_blank") Can I use
+            |  site.
+          p.lead
+            | And also added a parallax effect and logo animation, a sample of which you
+            | 
+            a(href="https://codepen.io/andrejsharapov/pen/PVJrLO" target="blank" class="leadlink") can find here.
+
+        .blur
+          form
+            input(type="text", name="" placeholder="Email:")
+            input(type="text", name="" placeholder="Password:")
+            a(class="button" title="Behance" target="_blank" rel="noopener noreferrer" href="https://www.behance.net/gallery/86619879/Landing-Page-IOGO-MEDIA-(Concept-Update)") Click here
+
+    section#about
+      h2 TEAM OF EXPERTS
+      p Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore nam fugit quis qui possimus eos asperiores laudantium, dicta nisi velit non culpa animi inventore necessitatibus a repudiandae! Cupiditate, nisi voluptates?
+
+      .slider.autoplay
+        each f in slider_one
+          .block(class= f.s)
+            figure
+              img(src=fig_url + f.fig, alt="")
+              figcaption Name Surname
+            p= f.name
+      
+      p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, impedit, aut blanditiis officiis quisquam atque consequuntur laborum odit necessitatibus doloribus ab nam accusantium molestiae id veniam aspernatur nihil fugit eius.
+
+    section#services
+      .grid.g_two
+        div
+          h2 Services
+          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore nam fugit quis qui possimus eos asperiores laudantium, dicta nisi velit non culpa animi inventore necessitatibus a repudiandae! Cupiditate, nisi voluptates?
+          p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, odio. Consequatur ipsam eligendi debitis accusamus iure veniam aut eius maiores, obcaecati, recusandae fuga nostrum! Sint iure doloremque ipsum adipisci consequuntur.
+          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, impedit, aut blanditiis officiis quisquam atque consequuntur laborum odit necessitatibus doloribus ab nam accusantium molestiae id veniam aspernatur nihil fugit eius.
+        .flex.column
+          each v in bars
+            .flex.column
+              .flex.bar_val
+                  h3= v.n
+                  span= v.v + '%'
+              progress(value=v.v max="100")
+
+    section#testimonials
+      h2 Testimonials
+      p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, odio. Consequatur ipsam eligendi debitis accusamus iure veniam aut eius maiores, obcaecati, recusandae fuga nostrum! Sint iure doloremque ipsum adipisci consequuntur.
+
+      .slider.tes
+        each f in slider_one
+          div.blockquote
+            img(src=fig_url + f.fig, alt="")
+            .author Name Surname
+            .pos Position
+            blockquote
+              p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita dolorum ea dolore adipisci.
+
+    section#news
+      h2 Market News
+      .grid.g_three.news
+        each b in news
+          .post
+            h3= b.h
+            .date= b.d
+            p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet cum mollitia autem ut, optio nisi nemo officia voluptatum corrupti doloremque accusamus ab impedit odit quod neque corporis deserunt magni incidunt!
+            .tags
+              a(href="#")= b.t
+
+    section#letter
+      h2 Subscribe to always be up to date in our latest news!
+      p Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium reprehenderit nihil eligendi ad nostrum! Necessitatibus impedit perferendis explicabo adipisci debitis fugiat quisquam aliquam non maiores aliquid, error, hic rem dolorem!Ducimus accusamus et id excepturi ad nemo, hic dolor, mollitia expedita tempora nulla quasi rerum voluptates ipsum sint distinctio,  perferendis quis. Placeat nam et cumque aut odio id possimus! Tempore.
+      form.flex(action="")
+        input(type="text", name="" placeholder="Enter your email...")
+        input.button(type="submit", value="Subscribe")
+
+  footer#bottom
+    .widgets
+      div.f_logo
+        h3.foo_logo iOGO
+        
+      .widget
+        h5 Follow me
+        ul
+          each w in w_1
+            li
+              i(class= w.icon aria-hidden="true") 
+              a(href= w.link title= w.text target="_blank" rel="noopener noreferrer")  #{w.text}
+        
+      .widget
+        each w in w_2
+          h5= w.h
+          ul
+            li= w.list[0]
+            li= w.list[1]
+            li= w.list[2]
+            li= w.list[3]
+        
+      .widget
+        each w in w_3
+          h5= w.h
+          ul
+            li= w.list[0]
+            li= w.list[1]
+            li= w.list[2]
+            li= w.list[3]
+        
+      .widget
+        h5 Contacts
+        ul
+          each w in w_4
+            li
+              i(class= w.icon aria-hidden="true") 
+              |  #{w.text}      
+      
+    .copy
+      p &copy; 2019 with 
+        span.heart &#9829; 
+        a(href="https://twitter.com/andrejsharapov" target="_blank" rel="noopener noreferrer")  Andrej Sharapov
+      p
+        a(href="#home") Back &#x2191; to top
